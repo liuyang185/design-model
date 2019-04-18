@@ -11,5 +11,6 @@ public class ObserverTest {
         subject.registerObserver(o3);
         subject.notifyObserver("明天不上课");
 
+
     }
 }
