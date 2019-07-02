@@ -1,8 +1,6 @@
 package com.mianshi;
 
-import com.liuyang.threadpool.bean.Door;
-import com.liuyang.threadpool.bean.Home;
-import com.liuyang.threadpool.bean.House;
+import com.mianshi.bean.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -33,8 +31,8 @@ public class EhanceThreadTest {
                         }
                     });
                     try {
-                        if(doorService.awaitTermination(1, TimeUnit.SECONDS)){
-                            doorService.shutdown();
+                        doorService.shutdown();
+                        while(! doorService.awaitTermination(1, TimeUnit.SECONDS)){
                         }
                     } catch (InterruptedException e) {
                         e.printStackTrace();
@@ -44,7 +42,10 @@ public class EhanceThreadTest {
             });
 
         }
-        homeService.awaitTermination(10,TimeUnit.SECONDS);
+        homeService.shutdown();
+        while(!homeService.awaitTermination(10,TimeUnit.SECONDS)){
+
+        };
         System.out.println(count);
 
     }

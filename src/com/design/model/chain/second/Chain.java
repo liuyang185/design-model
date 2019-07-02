@@ -9,7 +9,9 @@ public class Chain implements Case {
 
     @Override
     public void handle(int flag, Case c) {
-        if(index == list.size()) return;
+        if(index == list.size()) {
+            return;
+        }
         BaseCase baseCase = list.get(index);
         System.out.println(baseCase.getName()+"开始");
         index ++;
